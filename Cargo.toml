@@ -1,0 +1,44 @@
+[package]
+name = "gl33"
+description = "Bindings to OpenGL 3.3"
+version = "0.0.0-alpha.0"
+authors = ["Lokathor <zefria@gmail.com>"]
+edition = "2018"
+repository = "https://github.com/Lokathor/gl33"
+license = "Zlib OR Apache-2.0 OR MIT"
+keywords = ["GL", "OpenGL", "graphics", "gamedev"]
+categories = ["external-ffi-bindings", "graphics", "no-std", "rendering::graphics-api"]
+
+[dependencies]
+# Enables `bytemuck::Zeroable` on the `GlFns` struct.
+bytemuck = { version = "1", optional = true }
+
+# Uses this for C types (otherwise std::os::raw)
+chlorine = { version = "1", optional = true }
+
+# Logging features below use this crate (otherwise println / eprintln)
+log = { version = "0.4", optional = true }
+
+[features]
+default = []
+
+# Load and call GL globally
+global_loader = []
+
+# Load and call GL as a struct
+struct_loader = []
+
+# w/debug_assertions: `trace!` each call to GL before making the GL call.
+debug_trace_calls = []
+
+# w/debug_assertions: Call glGetError after every GL call and `error!` if necessary.
+debug_automatic_glGetError = []
+
+# Tag all GL funcitons as `#[inline]`
+inline = []
+
+# Tag all GL funcitons as `#[inline(always)]`
+inline_always = []
+
+[package.metadata.docs.rs]
+features = ["global_loader", "struct_loader"]
