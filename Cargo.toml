@@ -40,5 +40,8 @@ inline = []
 # Tag all GL funcitons as `#[inline(always)]`
 inline_always = []
 
+[dev-dependencies]
+fermium = { version = "200.12", default-features = false, features = ["static_link"] }
+
 [package.metadata.docs.rs]
 features = ["global_loader", "struct_loader"]
