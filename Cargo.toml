@@ -28,6 +28,12 @@ global_loader = []
 # Load and call GL as a struct
 struct_loader = []
 
+# Enable loading/usage of GL_ARB_debug_output enums/commands
+GL_ARB_debug_output = []
+
+# Enable loading/usage of GL_KHR_debug enums/commands
+GL_KHR_debug = []
+
 # w/debug_assertions: `trace!` each call to GL before making the GL call.
 debug_trace_calls = []
 
@@ -51,4 +57,5 @@ name = "fermium_struct"
 required-features = ["struct_loader"]
 
 [package.metadata.docs.rs]
-features = ["global_loader", "struct_loader"]
+all-features = true
+rustdoc-args = ["--cfg","docs_rs"]
