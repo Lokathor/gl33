@@ -1,7 +1,7 @@
 [package]
 name = "gl33"
 description = "Bindings to OpenGL 3.3"
-version = "0.0.3"
+version = "0.0.4-alpha.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/Lokathor/gl33"
