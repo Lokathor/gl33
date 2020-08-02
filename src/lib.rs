@@ -9,6 +9,7 @@
 //!
 //! Included Extensions (activate via cargo feature):
 //! * `GL_ARB_debug_output`
+//! * `GL_ARB_texture_filter_anisotropic`
 //! * `GL_KHR_debug`
 //!
 //! Supported Features:
@@ -1162,6 +1163,13 @@ pub mod enums {
   pub const GL_MAX_TEXTURE_IMAGE_UNITS: GLenum = 0x8872;
   #[doc = "`GL_MAX_TEXTURE_LOD_BIAS: GLenum = 0x84FD`\n* **Group:** GetPName"]
   pub const GL_MAX_TEXTURE_LOD_BIAS: GLenum = 0x84FD;
+  #[doc = "`GL_MAX_TEXTURE_MAX_ANISOTROPY: GLenum = 0x84FF`"]
+  #[cfg(any(feature = "GL_ARB_texture_filter_anisotropic"))]
+  #[cfg_attr(
+    docs_rs,
+    doc(cfg(any(feature = "GL_ARB_texture_filter_anisotropic")))
+  )]
+  pub const GL_MAX_TEXTURE_MAX_ANISOTROPY: GLenum = 0x84FF;
   #[doc = "`GL_MAX_TEXTURE_SIZE: GLenum = 0x0D33`\n* **Group:** GetPName"]
   pub const GL_MAX_TEXTURE_SIZE: GLenum = 0x0D33;
   #[doc = "`GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum = 0x8C8A`"]
@@ -1898,6 +1906,13 @@ pub mod enums {
   pub const GL_TEXTURE_LOD_BIAS: GLenum = 0x8501;
   #[doc = "`GL_TEXTURE_MAG_FILTER: GLenum = 0x2800`\n* **Groups:** SamplerParameterI, GetTextureParameter, TextureParameterName"]
   pub const GL_TEXTURE_MAG_FILTER: GLenum = 0x2800;
+  #[doc = "`GL_TEXTURE_MAX_ANISOTROPY: GLenum = 0x84FE`\n* **Group:** SamplerParameterF"]
+  #[cfg(any(feature = "GL_ARB_texture_filter_anisotropic"))]
+  #[cfg_attr(
+    docs_rs,
+    doc(cfg(any(feature = "GL_ARB_texture_filter_anisotropic")))
+  )]
+  pub const GL_TEXTURE_MAX_ANISOTROPY: GLenum = 0x84FE;
   #[doc = "`GL_TEXTURE_MAX_LEVEL: GLenum = 0x813D`\n* **Group:** TextureParameterName"]
   pub const GL_TEXTURE_MAX_LEVEL: GLenum = 0x813D;
   #[doc = "`GL_TEXTURE_MAX_LOD: GLenum = 0x813B`\n* **Groups:** SamplerParameterF, TextureParameterName"]

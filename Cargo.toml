@@ -34,6 +34,9 @@ GL_ARB_debug_output = []
 # Enable loading/usage of GL_KHR_debug enums/commands
 GL_KHR_debug = []
 
+# Enable usage of GL_ARB_texture_filter_anisotropic enums
+GL_ARB_texture_filter_anisotropic = []
+
 # w/debug_assertions: `trace!` each call to GL before making the GL call.
 debug_trace_calls = []
 
