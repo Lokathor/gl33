@@ -43,5 +43,12 @@ inline_always = []
 [dev-dependencies]
 fermium = { version = "200.12", default-features = false, features = ["static_link"] }
 
+[[example]]
+name = "fermium_global"
+required-features = ["global_loader"]
+[[example]]
+name = "fermium_struct"
+required-features = ["struct_loader"]
+
 [package.metadata.docs.rs]
 features = ["global_loader", "struct_loader"]
