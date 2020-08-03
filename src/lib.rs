@@ -3334,11 +3334,7 @@ pub mod global_commands {
   pub unsafe fn glBindFramebuffer(target: GLenum, framebuffer: GLuint) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glBindFramebuffer({:#X}, {:?});",
-        target,
-        framebuffer
-      );
+      trace!("calling glBindFramebuffer({:#X}, {:?});", target, framebuffer);
     }
     let out = call_atomic_ptr_2arg(
       "glBindFramebuffer",
@@ -3379,11 +3375,7 @@ pub mod global_commands {
   pub unsafe fn glBindRenderbuffer(target: GLenum, renderbuffer: GLuint) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glBindRenderbuffer({:#X}, {:?});",
-        target,
-        renderbuffer
-      );
+      trace!("calling glBindRenderbuffer({:#X}, {:?});", target, renderbuffer);
     }
     let out = call_atomic_ptr_2arg(
       "glBindRenderbuffer",
@@ -5850,11 +5842,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glDeleteRenderbuffers({:?}, {:p});",
-        n,
-        renderbuffers
-      );
+      trace!("calling glDeleteRenderbuffers({:?}, {:p});", n, renderbuffers);
     }
     let out = call_atomic_ptr_2arg(
       "glDeleteRenderbuffers",
@@ -6328,12 +6316,7 @@ pub mod global_commands {
   pub unsafe fn glDrawArrays(mode: GLenum, first: GLint, count: GLsizei) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glDrawArrays({:#X}, {:?}, {:?});",
-        mode,
-        first,
-        count
-      );
+      trace!("calling glDrawArrays({:#X}, {:?}, {:?});", mode, first, count);
     }
     let out =
       call_atomic_ptr_3arg("glDrawArrays", &glDrawArrays_p, mode, first, count);
@@ -8985,9 +8968,7 @@ pub mod global_commands {
   #[inline]
   #[doc(hidden)]
   pub fn glGetFramebufferAttachmentParameteriv_is_loaded() -> bool {
-    !glGetFramebufferAttachmentParameteriv_p
-      .load(RELAX)
-      .is_null()
+    !glGetFramebufferAttachmentParameteriv_p.load(RELAX).is_null()
   }
 
   /// [glGetInteger64i_v](http://docs.gl/gl3/glGetInteger64i_v)(target, index, data)
@@ -12131,12 +12112,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glObjectPtrLabel({:p}, {:?}, {:p});",
-        ptr,
-        length,
-        label
-      );
+      trace!("calling glObjectPtrLabel({:p}, {:?}, {:p});", ptr, length, label);
     }
     let out = call_atomic_ptr_3arg(
       "glObjectPtrLabel",
@@ -13328,13 +13304,7 @@ pub mod global_commands {
   pub unsafe fn glScissor(x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glScissor({:?}, {:?}, {:?}, {:?});",
-        x,
-        y,
-        width,
-        height
-      );
+      trace!("calling glScissor({:?}, {:?}, {:?}, {:?});", x, y, width, height);
     }
     let out =
       call_atomic_ptr_4arg("glScissor", &glScissor_p, x, y, width, height);
@@ -13421,12 +13391,7 @@ pub mod global_commands {
   pub unsafe fn glStencilFunc(func: GLenum, ref_: GLint, mask: GLuint) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glStencilFunc({:#X}, {:?}, {:?});",
-        func,
-        ref_,
-        mask
-      );
+      trace!("calling glStencilFunc({:#X}, {:?}, {:?});", func, ref_, mask);
     }
     let out =
       call_atomic_ptr_3arg("glStencilFunc", &glStencilFunc_p, func, ref_, mask);
@@ -13597,12 +13562,7 @@ pub mod global_commands {
   pub unsafe fn glStencilOp(fail: GLenum, zfail: GLenum, zpass: GLenum) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glStencilOp({:#X}, {:#X}, {:#X});",
-        fail,
-        zfail,
-        zpass
-      );
+      trace!("calling glStencilOp({:#X}, {:#X}, {:#X});", fail, zfail, zpass);
     }
     let out =
       call_atomic_ptr_3arg("glStencilOp", &glStencilOp_p, fail, zfail, zpass);
@@ -14579,12 +14539,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform1fv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform1fv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform1fv",
@@ -14658,12 +14613,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform1iv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform1iv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform1iv",
@@ -14823,12 +14773,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform2fv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform2fv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform2fv",
@@ -14903,12 +14848,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform2iv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform2iv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform2iv",
@@ -15076,12 +15016,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform3fv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform3fv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform3fv",
@@ -15162,12 +15097,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform3iv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform3iv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform3iv",
@@ -15357,12 +15287,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform4fv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform4fv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform4fv",
@@ -15453,12 +15378,7 @@ pub mod global_commands {
   ) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glUniform4iv({:?}, {:?}, {:p});",
-        location,
-        count,
-        value
-      );
+      trace!("calling glUniform4iv({:?}, {:?}, {:p});", location, count, value);
     }
     let out = call_atomic_ptr_3arg(
       "glUniform4iv",
@@ -19177,12 +19097,7 @@ pub mod global_commands {
   pub unsafe fn glWaitSync(sync: GLsync, flags: GLbitfield, timeout: GLuint64) {
     #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
     {
-      trace!(
-        "calling glWaitSync({:p}, {:?}, {:?});",
-        sync,
-        flags,
-        timeout
-      );
+      trace!("calling glWaitSync({:p}, {:?}, {:?});", sync, flags, timeout);
     }
     let out =
       call_atomic_ptr_3arg("glWaitSync", &glWaitSync_p, sync, flags, timeout);
@@ -20108,11 +20023,7 @@ pub mod struct_commands {
     pub unsafe fn BindFramebuffer(&self, target: GLenum, framebuffer: GLuint) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.BindFramebuffer({:#X}, {:?});",
-          target,
-          framebuffer
-        );
+        trace!("calling gl.BindFramebuffer({:#X}, {:?});", target, framebuffer);
       }
       let out = call_atomic_ptr_2arg(
         "glBindFramebuffer",
@@ -22284,11 +22195,7 @@ pub mod struct_commands {
     ) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.DeleteFramebuffers({:?}, {:p});",
-          n,
-          framebuffers
-        );
+        trace!("calling gl.DeleteFramebuffers({:?}, {:p});", n, framebuffers);
       }
       let out = call_atomic_ptr_2arg(
         "glDeleteFramebuffers",
@@ -22396,11 +22303,7 @@ pub mod struct_commands {
     ) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.DeleteRenderbuffers({:?}, {:p});",
-          n,
-          renderbuffers
-        );
+        trace!("calling gl.DeleteRenderbuffers({:?}, {:p});", n, renderbuffers);
       }
       let out = call_atomic_ptr_2arg(
         "glDeleteRenderbuffers",
@@ -22836,12 +22739,7 @@ pub mod struct_commands {
     ) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.DrawArrays({:#X}, {:?}, {:?});",
-          mode,
-          first,
-          count
-        );
+        trace!("calling gl.DrawArrays({:#X}, {:?}, {:?});", mode, first, count);
       }
       let out = call_atomic_ptr_3arg(
         "glDrawArrays",
@@ -23175,10 +23073,7 @@ pub mod struct_commands {
     #[inline]
     #[doc(hidden)]
     pub fn DrawElementsInstancedBaseVertex_is_loaded(&self) -> bool {
-      !self
-        .glDrawElementsInstancedBaseVertex_p
-        .load(RELAX)
-        .is_null()
+      !self.glDrawElementsInstancedBaseVertex_p.load(RELAX).is_null()
     }
     /// [glDrawRangeElements](http://docs.gl/gl3/glDrawRangeElements)(mode, start, end, count, type_, indices)
     /// * `mode` group: PrimitiveType
@@ -25256,10 +25151,7 @@ pub mod struct_commands {
     #[inline]
     #[doc(hidden)]
     pub fn GetFramebufferAttachmentParameteriv_is_loaded(&self) -> bool {
-      !self
-        .glGetFramebufferAttachmentParameteriv_p
-        .load(RELAX)
-        .is_null()
+      !self.glGetFramebufferAttachmentParameteriv_p.load(RELAX).is_null()
     }
     /// [glGetInteger64i_v](http://docs.gl/gl3/glGetInteger64i_v)(target, index, data)
     /// * `data` len: COMPSIZE(target)
@@ -28886,10 +28778,7 @@ pub mod struct_commands {
     #[inline]
     #[doc(hidden)]
     pub fn RenderbufferStorageMultisample_is_loaded(&self) -> bool {
-      !self
-        .glRenderbufferStorageMultisample_p
-        .load(RELAX)
-        .is_null()
+      !self.glRenderbufferStorageMultisample_p.load(RELAX).is_null()
     }
     /// [glSampleCoverage](http://docs.gl/gl3/glSampleCoverage)(value, invert)
     #[cfg_attr(feature = "inline", inline)]
@@ -29333,12 +29222,7 @@ pub mod struct_commands {
     pub unsafe fn StencilFunc(&self, func: GLenum, ref_: GLint, mask: GLuint) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.StencilFunc({:#X}, {:?}, {:?});",
-          func,
-          ref_,
-          mask
-        );
+        trace!("calling gl.StencilFunc({:#X}, {:?}, {:?});", func, ref_, mask);
       }
       let out = call_atomic_ptr_3arg(
         "glStencilFunc",
@@ -33315,11 +33199,7 @@ pub mod struct_commands {
     pub unsafe fn VertexAttribDivisor(&self, index: GLuint, divisor: GLuint) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.VertexAttribDivisor({:?}, {:?});",
-          index,
-          divisor
-        );
+        trace!("calling gl.VertexAttribDivisor({:?}, {:?});", index, divisor);
       }
       let out = call_atomic_ptr_2arg(
         "glVertexAttribDivisor",
@@ -33572,12 +33452,7 @@ pub mod struct_commands {
     pub unsafe fn VertexAttribI2ui(&self, index: GLuint, x: GLuint, y: GLuint) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.VertexAttribI2ui({:?}, {:?}, {:?});",
-          index,
-          x,
-          y
-        );
+        trace!("calling gl.VertexAttribI2ui({:?}, {:?}, {:?});", index, x, y);
       }
       let out = call_atomic_ptr_3arg(
         "glVertexAttribI2ui",
@@ -34645,12 +34520,7 @@ pub mod struct_commands {
     ) {
       #[cfg(all(debug_assertions, feature = "debug_trace_calls"))]
       {
-        trace!(
-          "calling gl.WaitSync({:p}, {:?}, {:?});",
-          sync,
-          flags,
-          timeout
-        );
+        trace!("calling gl.WaitSync({:p}, {:?}, {:?});", sync, flags, timeout);
       }
       let out = call_atomic_ptr_3arg(
         "glWaitSync",
