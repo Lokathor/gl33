@@ -2,6 +2,19 @@ use super::*;
 
 // Note(Lokathor): _p for ptr, _t for type
 
+/// A struct that holds all the functions to use OpenGL 3.3 Core.
+///
+/// Each supported GL command has a method named after the command, with the
+/// `gl` prefix removed. The expectation is that you'll name the struct's
+/// variable `gl`, and then calling a command such as `glFlush()` would be
+/// written as `gl.Flush()`.
+///
+/// Optionally, the `GL_KHR_debug` extension functions might be available. To
+/// see if an optional function is available, use the function's base name with
+/// `_is_loaded` at the end. The `_is_loaded` functions are hidden in the
+/// generated documentation, but they are there. Calling an optional function
+/// that is not loaded will panic. Note: To get high quality debug output, you
+/// generally have to ask for a debug context during context creation.
 #[repr(C)]
 pub struct GlFns {
   glActiveTexture_p: glActiveTexture_t,
@@ -379,9 +392,8 @@ impl GlFns {
   /// Loads all GL functions from the loader given.
   ///
   /// ## Failure
-  /// This fails if any non-nullable function does not load.
-  /// The error value will be the name of the first non-nullable function that
-  /// doesn't load.
+  /// This fails if any of the OpenGL 3.3 Core functions don't load. The error
+  /// value will be the name of the first function that doesn't load.
   ///
   /// ## Safety
   /// * The "Get Proc Address" function you provide will always be given a
@@ -389,6 +401,11 @@ impl GlFns {
   ///   a GL function to load.
   /// * The "Get Proc Address" function given must always return accurate
   ///   function pointer values, or null on failure.
+  /// * Some "Get Proc Address" implementations will return context-specific
+  ///   function pointers. Others will return general function pointers even if
+  ///   the current context doesn't support the command. It's **up to you** to
+  ///   only load and use this struct with an appropriate GL context as the
+  ///   current context.
   pub unsafe fn load_from(f: &dyn Fn(*const u8) -> *const c_void) -> Result<Self, &'static str> {
     use core::mem::transmute;
     type nn_cv = core::ptr::NonNull<c_void>;
