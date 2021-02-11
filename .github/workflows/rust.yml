@@ -17,11 +17,5 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Check Global Loader
-      run: cargo check --verbose --features=global_loader
-      
-    - name: Check Struct Loader
-      run: cargo check --verbose --features=struct_loader
-      
-    - name: Tests With All Features
-      run: cargo test --all-features
+    - name: Cargo "test" (which builds the examples)
+      run: cargo test
