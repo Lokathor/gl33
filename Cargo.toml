@@ -1,7 +1,7 @@
 [package]
 name = "gl33"
-description = "Bindings to OpenGL 3.3"
-version = "0.1.2-alpha.0"
+description = "Bindings to OpenGL 3.3 + GL_KHR_debug"
+version = "0.2.0-alpha.0"
 authors = ["Lokathor <zefria@gmail.com>"]
 edition = "2018"
 repository = "https://github.com/Lokathor/gl33"
@@ -10,55 +10,10 @@ keywords = ["GL", "OpenGL", "graphics", "gamedev"]
 categories = ["external-ffi-bindings", "graphics", "no-std", "rendering::graphics-api"]
 
 [dependencies]
-# Enables `bytemuck::Zeroable` on the `GlFns` struct.
-bytemuck = { version = "1", optional = true }
-
-# Uses this for C types (otherwise std::os::raw)
-chlorine = { version = "1", optional = true }
-
-# Logging features below use this crate (otherwise println / eprintln)
-log = { version = "0.4", optional = true }
+chlorine = "1"
 
 [features]
 default = []
 
-# Load and call GL globally
-global_loader = []
-
-# Load and call GL as a struct
-struct_loader = []
-
-# Enable loading/usage of GL_ARB_debug_output enums/commands
-GL_ARB_debug_output = []
-
-# Enable loading/usage of GL_KHR_debug enums/commands
-GL_KHR_debug = []
-
-# Enable usage of GL_ARB_texture_filter_anisotropic enums
-GL_ARB_texture_filter_anisotropic = []
-
-# w/debug_assertions: `trace!` each call to GL before making the GL call.
-debug_trace_calls = []
-
-# w/debug_assertions: Call glGetError after every GL call and `error!` if necessary.
-debug_automatic_glGetError = []
-
-# Tag all GL funcitons as `#[inline]`
-inline = []
-
-# Tag all GL funcitons as `#[inline(always)]`
-inline_always = []
-
 [dev-dependencies]
-fermium = { version = "200.12", default-features = false, features = ["static_link"] }
-
-[[example]]
-name = "fermium_global"
-required-features = ["global_loader"]
-[[example]]
-name = "fermium_struct"
-required-features = ["struct_loader"]
-
-[package.metadata.docs.rs]
-all-features = true
-rustdoc-args = ["--cfg","docs_rs"]
+fermium = { version = "20014" }
