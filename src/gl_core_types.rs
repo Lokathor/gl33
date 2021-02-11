@@ -77,54 +77,32 @@ impl core::ops::Not for GLbitfield {
 
 #[derive(Debug, PartialEq, Eq, Hash)]
 #[repr(transparent)]
-pub struct GLhandleARB(
-  #[cfg(any(target_os = "ios", target_os = "macos"))] pub *mut void,
-  #[cfg(not(any(target_os = "ios", target_os = "macos")))] pub c_uint,
-);
+struct GLhandleARB(#[cfg(any(target_os = "ios", target_os = "macos"))] pub *mut void, #[cfg(not(any(target_os = "ios", target_os = "macos")))] pub c_uint);
 
 #[derive(Debug, PartialEq, Eq, Hash)]
 #[repr(transparent)]
-pub struct GLeglClientBufferEXT(pub *mut void);
+struct GLeglClientBufferEXT(pub *mut void);
 
 #[derive(Debug, PartialEq, Eq, Hash)]
 #[repr(transparent)]
-pub struct GLeglImageOES(pub *mut void);
+struct GLeglImageOES(pub *mut void);
 
 #[derive(Debug, PartialEq, Eq, Hash)]
 #[repr(transparent)]
 pub struct GLsync(pub *mut void);
 
 #[repr(transparent)]
-pub struct _cl_context(pub void);
+struct _cl_context(pub void);
 
 #[repr(transparent)]
-pub struct _cl_event(pub void);
+struct _cl_event(pub void);
 
 // Note(Lokathor): These type aliases are useful to end users.
 
-pub type GLDEBUGPROC = Option<
-  unsafe extern "system" fn(
-    source: GLenum,
-    type_: GLenum,
-    id: GLuint,
-    severity: GLenum,
-    length: GLsizei,
-    message: *const GLchar,
-    userParam: *const void,
-  ),
->;
+pub type GLDEBUGPROC = Option<unsafe extern "system" fn(source: GLenum, type_: GLenum, id: GLuint, severity: GLenum, length: GLsizei, message: *const GLchar, userParam: *const void)>;
 pub type GLDEBUGPROCARB = GLDEBUGPROC;
 pub type GLDEBUGPROCKHR = GLDEBUGPROC;
-pub type GLDEBUGPROCAMD = Option<
-  unsafe extern "system" fn(
-    id: GLuint,
-    category: GLenum,
-    severity: GLenum,
-    length: GLsizei,
-    message: *const GLchar,
-    userParam: *mut void,
-  ),
->;
+pub type GLDEBUGPROCAMD = Option<unsafe extern "system" fn(id: GLuint, category: GLenum, severity: GLenum, length: GLsizei, message: *const GLchar, userParam: *mut void)>;
 pub type GLVULKANPROCNV = Option<unsafe extern "system" fn()>;
 
 // Note(Lokathor): These type aliases are *NOT* useful. Instead we will declare
