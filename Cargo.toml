@@ -12,8 +12,5 @@ categories = ["external-ffi-bindings", "graphics", "no-std", "rendering::graphic
 [dependencies]
 chlorine = "1"
 
-[features]
-default = []
-
 [dev-dependencies]
 fermium = { version = "20014" }
