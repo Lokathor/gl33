@@ -3,10 +3,9 @@
 
 //! Makes the OpenGL 3.3 Core API (+GL_KHR_debug) available for use.
 //!
-//! The crate's interface is provided a "struct" style loader.
-//!
-//! Construct a [`GlFns`] using an appropriate "gl_get_proc_address" function
-//! and then call its methods.
+//! The crate's interface is provided as a "struct" style loader. Construct a
+//! [`GlFns`] using an appropriate "gl_get_proc_address" function and then call
+//! its methods.
 //!
 //! ## `gl_get_proc_address`
 //!
@@ -40,9 +39,8 @@
 //!
 //! ## Inlining
 //!
-//! This crate does **not** use the `#[inline]` attribute.
-//! If you want full inlining just turn on Link-Time Optimization in your cargo
-//! profile:
+//! This crate does **not** use the `#[inline]` attribute. If you want full
+//! inlining just turn on Link-Time Optimization in your cargo profile:
 //!
 //! ```toml
 //! [profile.release]
