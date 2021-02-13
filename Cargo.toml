@@ -14,3 +14,7 @@ chlorine = "1"
 
 [dev-dependencies]
 fermium = { version = "20014" }
+
+[features]
+# enables `track_caller` attribute on any function that can panic.
+track_caller = []
