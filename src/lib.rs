@@ -7,6 +7,9 @@
 //! [`GlFns`] using an appropriate "gl_get_proc_address" function and then call
 //! its methods.
 //!
+//! There's also a "global" style loader if the `global_loader` feature is
+//! enabled.
+//!
 //! ## `gl_get_proc_address`
 //!
 //! GL must generally be dynamically loaded at runtime. This is done via a
