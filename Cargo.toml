@@ -13,7 +13,7 @@ categories = ["external-ffi-bindings", "graphics", "no-std", "rendering::graphic
 chlorine = "1"
 
 [dev-dependencies]
-fermium = { version = "20014" }
+fermium = { version = "20014", features = ["experimental_fast_build"] }
 
 [features]
 default = ["global_loader"]
