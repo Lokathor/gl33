@@ -4,6 +4,10 @@
 [![docs.rs](https://docs.rs/gl33/badge.svg)](https://docs.rs/gl33/)
 
 # gl33
-Bindings to OpenGL 3.3 + GL_KHR_debug.
+Bindings to OpenGL 3.3
 
-See the [crate documentation](https://docs.rs/gl33) for an explanation of the crate's operation.
+## Stability
+
+The `gl33` crate presents OpenGL 3.3 bindings for Rust, as described by [gl.xml](https://github.com/KhronosGroup/OpenGL-Registry/blob/master/xml/gl.xml).
+
+It's *very unlikely* that an update to GL 3.3 would ever be released that would cause a breaking change.
