@@ -63,3 +63,6 @@ pub use gl_groups::*;
 
 mod struct_loader;
 pub use struct_loader::*;
+
+#[cfg(feature = "global_loader")]
+pub mod global_loader;

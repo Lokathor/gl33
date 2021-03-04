@@ -930,6 +930,7 @@ pub type RenderbufferTarget = GLenum;
 /// SamplerParameterF
 /// * [`GL_TEXTURE_BORDER_COLOR`]
 /// * [`GL_TEXTURE_LOD_BIAS`]
+/// * [`GL_TEXTURE_MAX_ANISOTROPY`]
 /// * [`GL_TEXTURE_MAX_LOD`]
 /// * [`GL_TEXTURE_MIN_LOD`]
 pub type SamplerParameterF = GLenum;

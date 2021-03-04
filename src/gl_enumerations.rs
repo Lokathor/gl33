@@ -114,6 +114,10 @@ pub const GL_CLAMP_TO_EDGE: GLenum = GLenum(0x812F);
 
 pub const GL_CLEAR: GLenum = GLenum(0x1500);
 
+pub const GL_CLIPPING_INPUT_PRIMITIVES_ARB: GLenum = GLenum(0x82F6);
+
+pub const GL_CLIPPING_OUTPUT_PRIMITIVES_ARB: GLenum = GLenum(0x82F7);
+
 pub const GL_CLIP_DISTANCE0: GLenum = GLenum(0x3000);
 
 pub const GL_CLIP_DISTANCE1: GLenum = GLenum(0x3001);
@@ -229,6 +233,8 @@ pub const GL_COMPRESSED_SRGB: GLenum = GLenum(0x8C48);
 pub const GL_COMPRESSED_SRGB_ALPHA: GLenum = GLenum(0x8C49);
 
 pub const GL_COMPRESSED_TEXTURE_FORMATS: GLenum = GLenum(0x86A3);
+
+pub const GL_COMPUTE_SHADER_INVOCATIONS_ARB: GLenum = GLenum(0x82F5);
 
 pub const GL_CONDITION_SATISFIED: GLenum = GLenum(0x911C);
 
@@ -470,6 +476,8 @@ pub const GL_FRAGMENT_SHADER: GLenum = GLenum(0x8B30);
 
 pub const GL_FRAGMENT_SHADER_DERIVATIVE_HINT: GLenum = GLenum(0x8B8B);
 
+pub const GL_FRAGMENT_SHADER_INVOCATIONS_ARB: GLenum = GLenum(0x82F4);
+
 pub const GL_FRAMEBUFFER: GLenum = GLenum(0x8D40);
 
 pub const GL_FRAMEBUFFER_ATTACHMENT_ALPHA_SIZE: GLenum = GLenum(0x8215);
@@ -545,6 +553,10 @@ pub const GL_GEOMETRY_INPUT_TYPE: GLenum = GLenum(0x8917);
 pub const GL_GEOMETRY_OUTPUT_TYPE: GLenum = GLenum(0x8918);
 
 pub const GL_GEOMETRY_SHADER: GLenum = GLenum(0x8DD9);
+
+pub const GL_GEOMETRY_SHADER_INVOCATIONS: GLenum = GLenum(0x887F);
+
+pub const GL_GEOMETRY_SHADER_PRIMITIVES_EMITTED_ARB: GLenum = GLenum(0x82F3);
 
 pub const GL_GEOMETRY_VERTICES_OUT: GLenum = GLenum(0x8916);
 
@@ -748,6 +760,8 @@ pub const GL_MAX_TEXTURE_IMAGE_UNITS: GLenum = GLenum(0x8872);
 
 pub const GL_MAX_TEXTURE_LOD_BIAS: GLenum = GLenum(0x84FD);
 
+pub const GL_MAX_TEXTURE_MAX_ANISOTROPY: GLenum = GLenum(0x84FF);
+
 pub const GL_MAX_TEXTURE_SIZE: GLenum = GLenum(0x0D33);
 
 pub const GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS: GLenum = GLenum(0x8C8A);
@@ -895,6 +909,8 @@ pub const GL_POLYGON_SMOOTH: GLenum = GLenum(0x0B41);
 pub const GL_POLYGON_SMOOTH_HINT: GLenum = GLenum(0x0C53);
 
 pub const GL_PRIMITIVES_GENERATED: GLenum = GLenum(0x8C87);
+
+pub const GL_PRIMITIVES_SUBMITTED_ARB: GLenum = GLenum(0x82EF);
 
 pub const GL_PRIMITIVE_RESTART: GLenum = GLenum(0x8F9D);
 
@@ -1312,6 +1328,10 @@ pub const GL_SYNC_GPU_COMMANDS_COMPLETE: GLenum = GLenum(0x9117);
 
 pub const GL_SYNC_STATUS: GLenum = GLenum(0x9114);
 
+pub const GL_TESS_CONTROL_SHADER_PATCHES_ARB: GLenum = GLenum(0x82F1);
+
+pub const GL_TESS_EVALUATION_SHADER_INVOCATIONS_ARB: GLenum = GLenum(0x82F2);
+
 pub const GL_TEXTURE: GLenum = GLenum(0x1702);
 
 pub const GL_TEXTURE0: GLenum = GLenum(0x84C0);
@@ -1473,6 +1493,8 @@ pub const GL_TEXTURE_INTERNAL_FORMAT: GLenum = GLenum(0x1003);
 pub const GL_TEXTURE_LOD_BIAS: GLenum = GLenum(0x8501);
 
 pub const GL_TEXTURE_MAG_FILTER: GLenum = GLenum(0x2800);
+
+pub const GL_TEXTURE_MAX_ANISOTROPY: GLenum = GLenum(0x84FE);
 
 pub const GL_TEXTURE_MAX_LEVEL: GLenum = GLenum(0x813D);
 
@@ -1705,6 +1727,10 @@ pub const GL_VERTEX_ATTRIB_ARRAY_TYPE: GLenum = GLenum(0x8625);
 pub const GL_VERTEX_PROGRAM_POINT_SIZE: GLenum = GLenum(0x8642);
 
 pub const GL_VERTEX_SHADER: GLenum = GLenum(0x8B31);
+
+pub const GL_VERTEX_SHADER_INVOCATIONS_ARB: GLenum = GLenum(0x82F0);
+
+pub const GL_VERTICES_SUBMITTED_ARB: GLenum = GLenum(0x82EE);
 
 pub const GL_VIEWPORT: GLenum = GLenum(0x0BA2);
 

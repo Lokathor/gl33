@@ -1133,10 +1133,14 @@ impl GlFns {
   pub unsafe fn ActiveTexture(&self, texture: TextureUnit) {
     (self.glActiveTexture_p)(texture)
   }
-  /// glAttachShader
-  /// * `program` class: program
-  /// * `shader` class: shader
-  pub unsafe fn AttachShader(&self, program: GLuint, shader: GLuint) {
+  /// [glAttachShader](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glAttachShader.xhtml)
+  ///
+  /// Attaches the given shader object to the given program object. You can
+  /// attach more than one shader of the same type to a program.
+  ///
+  /// * `program` is the program you're attaching the shader object to.
+  /// * `shader` is the shader you're attaching.
+  pub fn AttachShader(&self, program: GLuint, shader: GLuint) {
     (self.glAttachShader_p)(program, shader)
   }
   /// glBeginConditionalRender
@@ -1215,9 +1219,13 @@ impl GlFns {
   pub unsafe fn BindTexture(&self, target: TextureTarget, texture: GLuint) {
     (self.glBindTexture_p)(target, texture)
   }
-  /// glBindVertexArray
-  /// * `array` class: vertex array
-  pub unsafe fn BindVertexArray(&self, array: GLuint) {
+  /// [glBindVertexArray](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindVertexArray.xhtml)
+  ///
+  /// Binds a given vertex array object as the active vertex array object.
+  /// Passing 0 will make it so that no vertex array object is bound.
+  ///
+  /// * `array` names the vertex array object to bind.
+  pub fn BindVertexArray(&self, array: GLuint) {
     (self.glBindVertexArray_p)(array)
   }
   /// glBlendColor
@@ -1297,10 +1305,28 @@ impl GlFns {
   pub unsafe fn ClearBufferfi(&self, buffer: Buffer, drawbuffer: GLint, depth: GLfloat, stencil: GLint) {
     (self.glClearBufferfi_p)(buffer, drawbuffer, depth, stencil)
   }
-  /// glClearBufferfv
-  /// * `buffer` group: Buffer
-  /// * `drawbuffer` group: DrawBufferName
-  /// * `value` len: COMPSIZE(buffer)
+  /// [glClearBufferfv](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glClearBuffer.xhtml)
+  ///
+  /// Clears a specified buffer of the currently bound draw framebuffer object
+  /// to a specified value.
+  ///
+  /// * If `buffer` is `GL_COLOR`, a particular draw buffer `GL_DRAW_BUFFERi` is
+  ///   specified by passing `i` as `drawbuffer` (eg: to affect
+  ///   `GL_DRAW_BUFFER0` you'd pass 0). In this case, `value` points to a
+  ///   four-element vector specifying the R, G, B, and A color to clear that
+  ///   draw buffer to. If the value of `GL_DRAW_BUFFERi` is `GL_NONE`, the
+  ///   command has no effect. Otherwise, the value of `GL_DRAW_BUFFERi`
+  ///   identifies one or more color buffers, each of which is cleared to the
+  ///   same value. Clamping and type conversion for fixed-point color buffers
+  ///   are performed in the same fashion as for `glClearColor`.
+  /// * If `buffer` is `GL_DEPTH`, `drawbuffer` must be zero, and `value` points
+  ///   to a single value to clear the depth buffer to. Clamping and type
+  ///   conversion for fixed-point depth buffers are performed in the same
+  ///   fashion as for `glClearDepth`.
+  ///
+  /// ## Errors
+  /// * `GL_INVALID_ENUM` is generated if `buffer` is not `GL_COLOR` or
+  ///   `GL_DEPTH`.
   pub unsafe fn ClearBufferfv(&self, buffer: Buffer, drawbuffer: GLint, value: *const GLfloat) {
     (self.glClearBufferfv_p)(buffer, drawbuffer, value)
   }
@@ -1358,9 +1384,14 @@ impl GlFns {
   pub unsafe fn ColorMaski(&self, index: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean) {
     (self.glColorMaski_p)(index, r, g, b, a)
   }
-  /// glCompileShader
-  /// * `shader` class: shader
-  pub unsafe fn CompileShader(&self, shader: GLuint) {
+  /// [glCompileShader](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCompileShader.xhtml)
+  ///
+  /// Compiles the source code assigned to the shader. The compilation status is
+  /// stored as part of the shader object's state, check it with `glGetShader`
+  /// and `glGetShaderInfoLog`.
+  ///
+  /// * `shader` names the shader to compile.
+  pub fn CompileShader(&self, shader: GLuint) {
     (self.glCompileShader_p)(shader)
   }
   /// glCompressedTexImage1D
@@ -1485,13 +1516,25 @@ impl GlFns {
   pub unsafe fn CopyTexSubImage3D(&self, target: TextureTarget, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
     (self.glCopyTexSubImage3D_p)(target, level, xoffset, yoffset, zoffset, x, y, width, height)
   }
-  /// glCreateProgram
-  pub unsafe fn CreateProgram(&self) -> GLuint {
+  /// [glCreateProgram](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCreateProgram.xhtml)
+  ///
+  /// Creates an empty program object, returning its name (a non-zero ID value).
+  ///
+  /// ## Failure
+  /// * If this fails, 0 is returned.
+  pub fn CreateProgram(&self) -> GLuint {
     (self.glCreateProgram_p)()
   }
-  /// glCreateShader
+  /// [glCreateShader](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glCreateShader.xhtml)
+  ///
+  /// Creates a new empty shader object of the given type, returning its name (a
+  /// non-zero ID value).
+  ///
   /// * `type` group: ShaderType
-  pub unsafe fn CreateShader(&self, type_: ShaderType) -> GLuint {
+  ///
+  /// ## Failure
+  /// * If an error occurs the function returns 0.
+  pub fn CreateShader(&self, type_: ShaderType) -> GLuint {
     (self.glCreateShader_p)(type_)
   }
   /// glCullFace
@@ -1511,9 +1554,15 @@ impl GlFns {
   pub unsafe fn DeleteFramebuffers(&self, n: GLsizei, framebuffers: *const GLuint) {
     (self.glDeleteFramebuffers_p)(n, framebuffers)
   }
-  /// glDeleteProgram
-  /// * `program` class: program
-  pub unsafe fn DeleteProgram(&self, program: GLuint) {
+  /// [glDeleteProgram](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteProgram.xhtml)
+  ///
+  /// Marks a program object for deletion. If the shader program is not in use
+  /// it will be immediately deleted, otherwise it will be deleted once it's
+  /// no longer in use. When a program object is deleted any shaders attached
+  /// to it are automatically unattached from it.
+  ///
+  /// * `program` names the program to mark for deletion.
+  pub fn DeleteProgram(&self, program: GLuint) {
     (self.glDeleteProgram_p)(program)
   }
   /// glDeleteQueries
@@ -1534,9 +1583,13 @@ impl GlFns {
   pub unsafe fn DeleteSamplers(&self, count: GLsizei, samplers: *const GLuint) {
     (self.glDeleteSamplers_p)(count, samplers)
   }
-  /// glDeleteShader
-  /// * `shader` class: shader
-  pub unsafe fn DeleteShader(&self, shader: GLuint) {
+  /// [glDeleteShader](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteShader.xhtml)
+  ///
+  /// Marks a shader to be deleted. If it's not attached to a program it will be
+  /// deleted immediately, otherwise it won't be deleted until it's unattached.
+  ///
+  /// * `shader` names the shader to mark for deletion.
+  pub fn DeleteShader(&self, shader: GLuint) {
     (self.glDeleteShader_p)(shader)
   }
   /// glDeleteSync
@@ -1552,9 +1605,15 @@ impl GlFns {
   pub unsafe fn DeleteTextures(&self, n: GLsizei, textures: *const GLuint) {
     (self.glDeleteTextures_p)(n, textures)
   }
-  /// glDeleteVertexArrays
-  /// * `arrays` class: vertex array
-  /// * `arrays` len: n
+  /// [glDeleteVertexArrays](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDeleteVertexArrays.xhtml)
+  ///
+  /// Deletes a list of vertex array objects. If a vertex array object that is
+  /// bound is deleted then the binding reverts to 0 and the default vertex
+  /// array becomes current. Passing any vertex array object IDs not currently
+  /// in use, or passing 0, is silently ignored.
+  ///
+  /// * `n` the size of the list
+  /// * `arrays` the vertex array objects to delete.
   pub unsafe fn DeleteVertexArrays(&self, n: GLsizei, arrays: *const GLuint) {
     (self.glDeleteVertexArrays_p)(n, arrays)
   }
@@ -1592,8 +1651,19 @@ impl GlFns {
   pub unsafe fn Disablei(&self, target: EnableCap, index: GLuint) {
     (self.glDisablei_p)(target, index)
   }
-  /// glDrawArrays
-  /// * `mode` group: PrimitiveType
+  /// [glDrawArrays](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glDrawArrays.xhtml)
+  ///
+  /// Draws `count` sequential indices using each enabled array to construct a
+  /// sequence of primitives, starting from `first`. Depending on the `mode`
+  /// specified, the number of indices required per primitive can vary.
+  ///
+  /// If vertex attributes are modified by `glDrawArrays` the values are
+  /// unspecified after the call returns. Any other attributes remain well
+  /// defined.
+  ///
+  /// * `mode` is the type of primitive to render.
+  /// * `first` is the starting index to use within the enabled arrays.
+  /// * `count` is the number of **indices** to be rendered.
   pub unsafe fn DrawArrays(&self, mode: PrimitiveType, first: GLint, count: GLsizei) {
     (self.glDrawArrays_p)(mode, first, count)
   }
@@ -2292,9 +2362,14 @@ impl GlFns {
   pub unsafe fn LineWidth(&self, width: GLfloat) {
     (self.glLineWidth_p)(width)
   }
-  /// glLinkProgram
-  /// * `program` class: program
-  pub unsafe fn LinkProgram(&self, program: GLuint) {
+  /// [glLinkProgram](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glLinkProgram.xhtml)
+  ///
+  /// Performs linking on a program object. The link status of the program will
+  /// be stored in its object state, you can check it with `glGetProgram`
+  /// and/or `glGetProgramInfoLog`.
+  ///
+  /// * `program` the name of the program to link
+  pub fn LinkProgram(&self, program: GLuint) {
     (self.glLinkProgram_p)(program)
   }
   /// glLogicOp
@@ -2376,9 +2451,14 @@ impl GlFns {
   pub unsafe fn PointParameteriv(&self, pname: PointParameterNameARB, params: *const GLint) {
     (self.glPointParameteriv_p)(pname, params)
   }
-  /// glPointSize
-  /// * `size` group: CheckedFloat32
-  pub unsafe fn PointSize(&self, size: GLfloat) {
+  /// [glPointSize](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glPointSize.xhtml)
+  ///
+  /// Sets the diameter of rasterized points if `GL_PROGRAM_POINT_SIZE` is
+  /// *disabled*. (Otherwise, this setting is ignored and you must modify
+  /// `gl_PointSize` from within a shader to change point size.)
+  ///
+  /// The default point size is 1.0, and it cannot be set to less than 0.0.
+  pub fn PointSize(&self, size: GLfloat) {
     (self.glPointSize_p)(size)
   }
   /// glPolygonMode
@@ -2487,10 +2567,19 @@ impl GlFns {
   pub unsafe fn Scissor(&self, x: GLint, y: GLint, width: GLsizei, height: GLsizei) {
     (self.glScissor_p)(x, y, width, height)
   }
-  /// glShaderSource
-  /// * `shader` class: shader
-  /// * `string` len: count
-  /// * `length` len: count
+  /// [glShaderSource](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glShaderSource.xhtml)
+  ///
+  /// Sets the source string of the named shader. This replaces any previously
+  /// set source. OpenGL copies the data into its own memory, so you can free
+  /// your instance of the source string after the call (if necessary).
+  ///
+  /// * `shader` the shader ID to attach the source to.
+  /// * `count` the length of the `string` and `length` arrays.
+  /// * `string` an array of pointers to the start of shader source code
+  ///   strings.
+  /// * `length` if non-null, this is an array of lengths for each pointer in
+  ///   `string` (or negative if that entry is null-termiated). if `length` is
+  ///   null then *all* strings in `string` must each be null-termianted.
   pub unsafe fn ShaderSource(&self, shader: GLuint, count: GLsizei, string: *const *const GLchar, length: *const GLint) {
     (self.glShaderSource_p)(shader, count, string, length)
   }
@@ -2845,9 +2934,15 @@ impl GlFns {
   pub unsafe fn UnmapBuffer(&self, target: BufferTargetARB) -> GLboolean {
     (self.glUnmapBuffer_p)(target)
   }
-  /// glUseProgram
-  /// * `program` class: program
-  pub unsafe fn UseProgram(&self, program: GLuint) {
+  /// [glUseProgram](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glUseProgram.xhtml)
+  ///
+  /// Sets a given shader program for use during rendering.
+  ///
+  /// Setting 0 as the program object makes the output of all rendering actions
+  /// undefined, but this is not an error.
+  ///
+  /// * `program` names the program to set for use.
+  pub fn UseProgram(&self, program: GLuint) {
     (self.glUseProgram_p)(program)
   }
   /// glValidateProgram

@@ -2,7 +2,7 @@ use super::*;
 
 pub(crate) type glActiveTexture_t = unsafe extern "system" fn(texture: TextureUnit);
 
-pub(crate) type glAttachShader_t = unsafe extern "system" fn(program: GLuint, shader: GLuint);
+pub(crate) type glAttachShader_t = extern "system" fn(program: GLuint, shader: GLuint);
 
 pub(crate) type glBeginConditionalRender_t = unsafe extern "system" fn(id: GLuint, mode: ConditionalRenderMode);
 
@@ -30,7 +30,7 @@ pub(crate) type glBindSampler_t = unsafe extern "system" fn(unit: GLuint, sample
 
 pub(crate) type glBindTexture_t = unsafe extern "system" fn(target: TextureTarget, texture: GLuint);
 
-pub(crate) type glBindVertexArray_t = unsafe extern "system" fn(array: GLuint);
+pub(crate) type glBindVertexArray_t = extern "system" fn(array: GLuint);
 
 pub(crate) type glBlendColor_t = unsafe extern "system" fn(red: GLfloat, green: GLfloat, blue: GLfloat, alpha: GLfloat);
 
@@ -74,7 +74,7 @@ pub(crate) type glColorMask_t = unsafe extern "system" fn(red: GLboolean, green:
 
 pub(crate) type glColorMaski_t = unsafe extern "system" fn(index: GLuint, r: GLboolean, g: GLboolean, b: GLboolean, a: GLboolean);
 
-pub(crate) type glCompileShader_t = unsafe extern "system" fn(shader: GLuint);
+pub(crate) type glCompileShader_t = extern "system" fn(shader: GLuint);
 
 pub(crate) type glCompressedTexImage1D_t = unsafe extern "system" fn(target: TextureTarget, level: GLint, internalformat: InternalFormat, width: GLsizei, border: GLint, imageSize: GLsizei, data: *const void);
 
@@ -100,9 +100,9 @@ pub(crate) type glCopyTexSubImage2D_t = unsafe extern "system" fn(target: Textur
 
 pub(crate) type glCopyTexSubImage3D_t = unsafe extern "system" fn(target: TextureTarget, level: GLint, xoffset: GLint, yoffset: GLint, zoffset: GLint, x: GLint, y: GLint, width: GLsizei, height: GLsizei);
 
-pub(crate) type glCreateProgram_t = unsafe extern "system" fn() -> GLuint;
+pub(crate) type glCreateProgram_t = extern "system" fn() -> GLuint;
 
-pub(crate) type glCreateShader_t = unsafe extern "system" fn(type_: ShaderType) -> GLuint;
+pub(crate) type glCreateShader_t = extern "system" fn(type_: ShaderType) -> GLuint;
 
 pub(crate) type glCullFace_t = unsafe extern "system" fn(mode: CullFaceMode);
 
@@ -116,7 +116,7 @@ pub(crate) type glDeleteBuffers_t = unsafe extern "system" fn(n: GLsizei, buffer
 
 pub(crate) type glDeleteFramebuffers_t = unsafe extern "system" fn(n: GLsizei, framebuffers: *const GLuint);
 
-pub(crate) type glDeleteProgram_t = unsafe extern "system" fn(program: GLuint);
+pub(crate) type glDeleteProgram_t = extern "system" fn(program: GLuint);
 
 pub(crate) type glDeleteQueries_t = unsafe extern "system" fn(n: GLsizei, ids: *const GLuint);
 
@@ -124,7 +124,7 @@ pub(crate) type glDeleteRenderbuffers_t = unsafe extern "system" fn(n: GLsizei, 
 
 pub(crate) type glDeleteSamplers_t = unsafe extern "system" fn(count: GLsizei, samplers: *const GLuint);
 
-pub(crate) type glDeleteShader_t = unsafe extern "system" fn(shader: GLuint);
+pub(crate) type glDeleteShader_t = extern "system" fn(shader: GLuint);
 
 pub(crate) type glDeleteSync_t = unsafe extern "system" fn(sync: GLsync);
 
@@ -380,7 +380,7 @@ pub(crate) type glIsVertexArray_t = unsafe extern "system" fn(array: GLuint) -> 
 
 pub(crate) type glLineWidth_t = unsafe extern "system" fn(width: GLfloat);
 
-pub(crate) type glLinkProgram_t = unsafe extern "system" fn(program: GLuint);
+pub(crate) type glLinkProgram_t = extern "system" fn(program: GLuint);
 
 pub(crate) type glLogicOp_t = unsafe extern "system" fn(opcode: LogicOp);
 
@@ -410,7 +410,7 @@ pub(crate) type glPointParameteri_t = unsafe extern "system" fn(pname: PointPara
 
 pub(crate) type glPointParameteriv_t = unsafe extern "system" fn(pname: PointParameterNameARB, params: *const GLint);
 
-pub(crate) type glPointSize_t = unsafe extern "system" fn(size: GLfloat);
+pub(crate) type glPointSize_t = extern "system" fn(size: GLfloat);
 
 pub(crate) type glPolygonMode_t = unsafe extern "system" fn(face: MaterialFace, mode: PolygonMode);
 
@@ -568,7 +568,7 @@ pub(crate) type glUniformMatrix4x3fv_t = unsafe extern "system" fn(location: GLi
 
 pub(crate) type glUnmapBuffer_t = unsafe extern "system" fn(target: BufferTargetARB) -> GLboolean;
 
-pub(crate) type glUseProgram_t = unsafe extern "system" fn(program: GLuint);
+pub(crate) type glUseProgram_t = extern "system" fn(program: GLuint);
 
 pub(crate) type glValidateProgram_t = unsafe extern "system" fn(program: GLuint);
 

@@ -16,5 +16,7 @@ chlorine = "1"
 fermium = { version = "20014" }
 
 [features]
+default = ["global_loader"]
+global_loader = []
 # enables `track_caller` attribute on any function that can panic.
 track_caller = []
