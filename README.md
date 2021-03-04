@@ -3,8 +3,6 @@
 [![crates.io](https://img.shields.io/crates/v/gl33.svg)](https://crates.io/crates/gl33)
 [![docs.rs](https://docs.rs/gl33/badge.svg)](https://docs.rs/gl33/)
 
-![Unsafe-101-Percent](https://img.shields.io/badge/Unsafety-101%25-red.svg)
-
 # gl33
 Bindings to OpenGL 3.3
 

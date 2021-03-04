@@ -1,6 +1,6 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use fermium::*;
+use fermium::{error::*, events::*, video::*, *};
 use gl33::*;
 
 fn main() {
@@ -13,7 +13,7 @@ fn main() {
       0,
       SDL_GL_SetAttribute(
         SDL_GL_CONTEXT_PROFILE_MASK,
-        SDL_GL_CONTEXT_PROFILE_CORE as _
+        SDL_GL_CONTEXT_PROFILE_CORE.0 as _
       )
     );
     // make window
@@ -23,10 +23,11 @@ fn main() {
       50,
       800,
       600,
-      (SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL) as _,
+      (SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL).0 as _,
     );
     if win.is_null() {
-      let mut p = SDL_GetError();
+      let mut v = Vec::with_capacity(4096);
+      let mut p = SDL_GetErrorMsg(v.as_mut_ptr(), v.capacity() as _);
       while *p != 0 {
         print!("{}", *p as u8 as char);
         p = p.add(1);
@@ -36,8 +37,9 @@ fn main() {
     }
     // make context the window will use
     let ctx = SDL_GL_CreateContext(win);
-    if ctx.is_null() {
-      let mut p = SDL_GetError();
+    if ctx.0.is_null() {
+      let mut v = Vec::with_capacity(4096);
+      let mut p = SDL_GetErrorMsg(v.as_mut_ptr(), v.capacity() as _);
       while *p != 0 {
         print!("{}", *p as u8 as char);
         p = p.add(1);
@@ -46,9 +48,9 @@ fn main() {
       panic!();
     }
     //
-    let gl = GlFns::load_with(|c_char_ptr| SDL_GL_GetProcAddress(c_char_ptr));
-    assert!(gl.ClearColor_is_loaded());
-    assert!(gl.Clear_is_loaded());
+    let gl =
+      GlFns::load_from(&|c_char_ptr| SDL_GL_GetProcAddress(c_char_ptr.cast()))
+        .unwrap();
     gl.ClearColor(0.2, 0.3, 0.3, 1.0);
     let mut event: SDL_Event = core::mem::zeroed();
     loop {
