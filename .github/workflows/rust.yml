@@ -17,5 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Cargo "test" (which builds the examples)
+    - name: Test with no default features
+      run: cargo test --no-default-features
+
+    - name: Test
       run: cargo test
+
+    - name: Test +track_caller
+      run: cargo test --features="track_caller"

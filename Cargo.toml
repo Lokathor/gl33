@@ -16,7 +16,8 @@ chlorine = "1"
 fermium = { version = "20014", features = ["experimental_fast_build"] }
 
 [features]
-default = ["global_loader"]
+default = ["global_loader", "println_debug"]
 global_loader = []
+println_debug = []
 # enables `track_caller` attribute on any function that can panic.
 track_caller = []
