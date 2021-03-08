@@ -2145,14 +2145,33 @@ impl GlFns {
   pub unsafe fn GetShaderiv(&self, shader: GLuint, pname: ShaderParameterName, params: *mut GLint) {
     (self.glGetShaderiv_p)(shader, pname, params)
   }
-  /// glGetString
-  /// * `name` group: StringName
-  pub unsafe fn GetString(&self, name: StringName) -> GLubyte {
+  /// [glGetString](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetString.xhtml)
+  ///
+  /// Gets various string info about the GL implementation.
+  ///
+  /// * `name`:
+  ///   * `GL_VENDOR`: The name of the company that made this GL implementation.
+  ///   * `GL_RENDERER`: The name of the renderer.
+  ///   * `GL_VERSION`: A version or release number.
+  ///   * `GL_SHADING_LANGUAGE_VERSION`: The version/release for the shading
+  ///     language.
+  pub unsafe fn GetString(&self, name: StringName) -> *const GLubyte {
     (self.glGetString_p)(name)
   }
-  /// glGetStringi
-  /// * `name` group: StringName
-  pub unsafe fn GetStringi(&self, name: StringName, index: GLuint) -> GLubyte {
+  /// [glGetStringi](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetString.xhtml)
+  ///
+  /// Gets indexed string info about the GL implementation.
+  ///
+  /// * `name`: One of:
+  ///   * `GL_EXTENSIONS`: Returns the name of the extension specified by
+  ///     `index`. Extensions are indexed in the range `0 .. GL_NUM_EXTENSIONS`.
+  ///     Use `glGetIntegerv` to find the current implementation's number of
+  ///     extensions.
+  /// * `index`: The index of the string to return.
+  ///
+  /// See Also:
+  /// [glGetIntegerv](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml)
+  pub unsafe fn GetStringi(&self, name: StringName, index: GLuint) -> *const GLubyte {
     (self.glGetStringi_p)(name, index)
   }
   /// glGetSynciv

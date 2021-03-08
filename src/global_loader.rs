@@ -3625,10 +3625,18 @@ pub fn glGetShaderiv_is_loaded() -> bool {
 pub unsafe fn glGetShaderiv_load_with(f: &dyn Fn(*const u8) -> *const c_void) {
   *glGetShaderiv_p.0.get() = core::mem::transmute::<Option<core::ptr::NonNull<c_void>>, Option<glGetShaderiv_t>>(gl_ptr_filter(f(b"glGetShaderiv\0".as_ptr())));
 }
-/// glGetString
-/// * `name` group: StringName
+/// [glGetString](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetString.xhtml)
+///
+/// Gets various string info about the GL implementation.
+///
+/// * `name`:
+///   * `GL_VENDOR`: The name of the company that made this GL implementation.
+///   * `GL_RENDERER`: The name of the renderer.
+///   * `GL_VERSION`: A version or release number.
+///   * `GL_SHADING_LANGUAGE_VERSION`: The version/release for the shading
+///     language.
 #[cfg_attr(feature = "track_caller", track_caller)]
-pub unsafe fn glGetString(name: StringName) -> GLubyte {
+pub unsafe fn glGetString(name: StringName) -> *const GLubyte {
   #[allow(unused_unsafe)]
   match unsafe { *glGetString_p.0.get() } {
     Some(glGetString_inner) => glGetString_inner(name),
@@ -3644,10 +3652,21 @@ pub fn glGetString_is_loaded() -> bool {
 pub unsafe fn glGetString_load_with(f: &dyn Fn(*const u8) -> *const c_void) {
   *glGetString_p.0.get() = core::mem::transmute::<Option<core::ptr::NonNull<c_void>>, Option<glGetString_t>>(gl_ptr_filter(f(b"glGetString\0".as_ptr())));
 }
-/// glGetStringi
-/// * `name` group: StringName
+/// [glGetStringi](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGetString.xhtml)
+///
+/// Gets indexed string info about the GL implementation.
+///
+/// * `name`: One of:
+///   * `GL_EXTENSIONS`: Returns the name of the extension specified by `index`.
+///     Extensions are indexed in the range `0 .. GL_NUM_EXTENSIONS`. Use
+///     `glGetIntegerv` to find the current implementation's number of
+///     extensions.
+/// * `index`: The index of the string to return.
+///
+/// See Also:
+/// [glGetIntegerv](https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glGet.xhtml)
 #[cfg_attr(feature = "track_caller", track_caller)]
-pub unsafe fn glGetStringi(name: StringName, index: GLuint) -> GLubyte {
+pub unsafe fn glGetStringi(name: StringName, index: GLuint) -> *const GLubyte {
   #[allow(unused_unsafe)]
   match unsafe { *glGetStringi_p.0.get() } {
     Some(glGetStringi_inner) => glGetStringi_inner(name, index),
